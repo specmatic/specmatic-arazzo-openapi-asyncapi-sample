@@ -22,8 +22,8 @@ def clean_order(engine):
 
 def seed_users(engine):
     users = [
-        User(location_code="IND-BLR", user_email="specmatic@blr.io"),
-        User(location_code="IND-DEL", user_email="specmatic@del.io"),
+        User(location_code="IND-BLR", user_email="blr@specmatic.io"),
+        User(location_code="IND-DEL", user_email="del@specmatic.io"),
     ]
 
     with Session(engine) as session:

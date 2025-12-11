@@ -68,7 +68,7 @@ operations:
     messages:
       - $ref: "#/channels/acceptedOrders/messages/acceptedStatus"
 
-  updateOrder:
+  outForDelivery:
     description: Handles a shipping status update
     action: receive
     channel:
