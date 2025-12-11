@@ -23,35 +23,46 @@ paths:
       operationId: getUserLocation
       description: Retrieves location details for a specific user identified by their UUID.
       tags:
-        - Location
+      - Location
       parameters:
-        - name: userEmail
-          in: query
-          description: The unique identifier of the user.
-          required: true
-          schema:
-            type: string
-            format: email
-            example: "specmatic@devs.io"
+      - name: userEmail
+        in: query
+        description: The unique identifier of the user.
+        required: true
+        schema:
+          type: string
+          format: email
+          example: specmatic@devs.io
+        examples:
+          location_GET_200_1:
+            value: bom@specmatic.io
+          location_GET_200_2:
+            value: hyd@specmatic.io
       responses:
-        "200":
+        '200':
           description: Successful retrieval of location data.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/LocationResponse"
-        "400":
-          description: Invalid request. usually due to a malformed UUID or missing parameters.
+                $ref: '#/components/schemas/LocationResponse'
+              examples:
+                location_GET_200_2:
+                  $ref: '#/components/examples/location_GET_200_2_response'
+                location_GET_200_1:
+                  $ref: '#/components/examples/location_GET_200_1_response'
+        '400':
+          description: Invalid request. usually due to a malformed UUID or missing
+            parameters.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "404":
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
           description: User not found.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
 
 components:
   schemas:
@@ -77,7 +88,16 @@ components:
       properties:
         code:
           type: string
-          example: "INVALID_UUID"
+          example: INVALID_UUID
         message:
           type: string
-          example: "The provided userId is not a valid UUID."
+          example: The provided userId is not a valid UUID.
+  examples:
+    location_GET_200_2_response:
+      value:
+        userId: naresh-jain
+        locationCode: HYD-IN
+    location_GET_200_1_response:
+      value:
+        userId: john-doe
+        locationCode: BOM-IN
