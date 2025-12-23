@@ -1,4 +1,4 @@
-# **Microservices Architecture – Overview**
+# **From REST to Events: API Workflow Testing and Mocking with a Single Arazzo Spec**
 
 APIs rarely work in isolation. Real-world usage involves multiple steps across both synchronous REST calls and asynchronous events, where the outcome of each step determines the journey a particular interaction takes. While testing individual endpoints is necessary, it's not sufficient. It is equally important to validate how those endpoints and events work together as part of a real workflow.
 
@@ -14,11 +14,11 @@ This repository showcases a microservices-based architecture for product retriev
 
 Ensure the following are installed:
 
-* **Docker Desktop**
-- [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+* **Specmatic Studio**
+- [https://www.docker.com/products/docker-desktop/](https://hub.docker.com/r/specmatic/specmatic-studio)
 
-* **Specmatic Docker Extension**
-- [https://hub.docker.com/extensions/specmatic/specmatic-docker-desktop-extension](https://hub.docker.com/extensions/specmatic/specmatic-docker-desktop-extension)
+* **Container Management Applications**
+- [Docker Desktop, Podman Desktop, Rancher Desktop, or Colima](https://docs.specmatic.io/references/docker_images.html#docker-desktop-alternatives)
 
 ---
 
@@ -27,8 +27,8 @@ Ensure the following are installed:
 ### Clone the project
 
 ```shell
-git clone https://github.com/specmatic/specmatic-arazzo-async-sample
-cd specmatic-arazzo-async-sample
+git clone https://github.com/specmatic/specmatic-arazzo-openapi-asyncapi-sample
+cd specmatic-arazzo-openapi-asyncapi-sample
 ```
 
 ---
