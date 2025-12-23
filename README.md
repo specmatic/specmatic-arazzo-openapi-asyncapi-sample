@@ -22,6 +22,16 @@ Ensure the following are installed:
 
 ---
 
+## 🗺 API Workflow
+
+![API Workflow](./assets/workflow.gif)
+
+## 🗺 Sequency Diagram
+
+![Sequency Diagram](./assets/flow.svg)
+
+---
+
 ## 🔧 Setup
 
 ### Clone the project
@@ -51,12 +61,6 @@ This launches the following services:
 | **Warehouse API** | 3003 | Manages inventory operations   |
 | **Kafka**         | 9092 | Internal broker port           |
 | **Postgres**      | 5432 | Shared database                |
-
----
-
-## 🗺 Architecture Diagram
-
-![Diagram](./assets/flow.svg)
 
 ---
 
