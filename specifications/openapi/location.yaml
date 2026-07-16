@@ -73,8 +73,7 @@ components:
         - locationCode
       properties:
         userId:
-          type: string
-          format: integer
+          type: integer
         locationCode:
           type: string
           example: "IND-HYD"

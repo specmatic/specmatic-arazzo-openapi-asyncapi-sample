@@ -31,7 +31,7 @@ paths:
           description: The unique identifier of the order to retrieve.
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         "200":
           description: Successful retrieval of order details.
@@ -59,17 +59,14 @@ components:
       required:
         - orderId
         - userId
-        - items
-        - locationCode
+        - productId
         - status
       properties:
         orderId:
-          type: string
-          format: uuid
+          type: integer
           description: The unique identifier of the order.
         userId:
-          type: string
-          format: uuid
+          type: integer
           description: The unique identifier of the user who placed the order.
         productId:
           type: integer

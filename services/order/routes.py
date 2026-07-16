@@ -4,7 +4,7 @@ from sqlmodel import select
 from common.models import Order, OrderStatus
 from order import KafkaDep, SessionDep
 from order.event_bus import Event, EventType
-from order.models import InventoryReserverRequest
+from order.models import InventoryReserverRequest, OrderResponse
 
 order_routes = APIRouter()
 
@@ -30,7 +30,7 @@ async def inventory_reserver(request: InventoryReserverRequest, session: Session
     event_bus.publish(event)
 
 
-@order_routes.get("/orders/{order_id}", status_code=status.HTTP_200_OK)
+@order_routes.get("/orders/{order_id}", status_code=status.HTTP_200_OK, response_model=OrderResponse)
 async def get_order(order_id: int, session: SessionDep):
     order = session.exec(select(Order).where(Order.order_id == order_id)).first()
     if not order:
