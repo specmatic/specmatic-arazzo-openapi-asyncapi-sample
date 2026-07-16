@@ -1,0 +1,5 @@
+PARAMETERS:
+  QUERY:
+    userEmail:
+      - blr@specmatic.io
+      - del@specmatic.io

@@ -1,0 +1,14 @@
+{
+  "id": "create-order-2",
+  "name": "CREATE_ORDER_2",
+  "receive": {
+    "topic": "new-orders",
+    "headers": {"requestId": "00000000-0000-4000-8000-000000000002"},
+    "payload": {"userId": 1, "productId": 1, "inventory": 2}
+  },
+  "send": {
+    "topic": "wip-orders",
+    "headers": {"requestId": "00000000-0000-4000-8000-000000000002"},
+    "payload": {"orderId": 4, "status": "PENDING"}
+  }
+}

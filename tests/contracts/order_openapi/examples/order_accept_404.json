@@ -1,0 +1,11 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/orders",
+    "body": {"orderId": 999999}
+  },
+  "http-response": {
+    "status": 404,
+    "body": {"code": "HTTPException", "message": "Order not found"}
+  }
+}

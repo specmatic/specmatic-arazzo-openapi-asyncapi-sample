@@ -1,0 +1,39 @@
+version: 3
+systemUnderTest:
+  service:
+    $ref: "#/components/services/location"
+    runOptions:
+      $ref: "#/components/runOptions/locationTest"
+    data:
+      examples:
+        - directories: [examples]
+      dictionary:
+        path: location_dictionary.yaml
+specmatic:
+  settings:
+    test:
+      schemaResiliencyTests: all
+      strictMode: false
+  governance:
+    report:
+      formats: [ctrf, html]
+      outputDirectory: build/reports/specmatic
+    successCriteria:
+      minCoveragePercentage: 100
+      maxMissedOperationsInSpec: 0
+      enforce: true
+components:
+  services:
+    location:
+      description: Location API
+      definitions:
+        - definition:
+            source:
+              filesystem:
+                directory: ../../../specifications/openapi
+            specs: [location.yaml]
+  runOptions:
+    locationTest:
+      openapi:
+        type: test
+        baseUrl: http://location:3000

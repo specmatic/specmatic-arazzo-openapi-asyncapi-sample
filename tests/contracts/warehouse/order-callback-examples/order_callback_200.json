@@ -1,0 +1,8 @@
+{
+  "http-request": {
+    "method": "POST",
+    "path": "/orders",
+    "body": {"orderId": 1}
+  },
+  "http-response": {"status": 200}
+}

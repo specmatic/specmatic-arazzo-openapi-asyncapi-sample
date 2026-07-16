@@ -1,0 +1,23 @@
+{
+  "id": "accept-order",
+  "name": "ACCEPT_ORDER",
+  "before": [
+    {
+      "type": "http",
+      "http-request": {
+        "baseUrl": "http://order:3002",
+        "path": "/orders",
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"orderId": 1}
+      },
+      "http-response": {"status": 200},
+      "timeout": "PT15S"
+    }
+  ],
+  "send": {
+    "topic": "accepted-orders",
+    "headers": {"requestId": "00000000-0000-4000-8000-000000000002"},
+    "payload": {"status": "ACCEPTED"}
+  }
+}

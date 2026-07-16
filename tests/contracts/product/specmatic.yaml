@@ -1,0 +1,37 @@
+version: 3
+systemUnderTest:
+  service:
+    $ref: "#/components/services/product"
+    runOptions:
+      $ref: "#/components/runOptions/productTest"
+    data:
+      examples:
+        - directories: [examples]
+specmatic:
+  settings:
+    test:
+      schemaResiliencyTests: all
+      strictMode: true
+  governance:
+    report:
+      formats: [ctrf, html]
+      outputDirectory: build/reports/specmatic
+    successCriteria:
+      minCoveragePercentage: 100
+      maxMissedOperationsInSpec: 0
+      enforce: true
+components:
+  services:
+    product:
+      description: Product API
+      definitions:
+        - definition:
+            source:
+              filesystem:
+                directory: ../../../specifications/openapi
+            specs: [product.yaml]
+  runOptions:
+    productTest:
+      openapi:
+        type: test
+        baseUrl: http://product:3001

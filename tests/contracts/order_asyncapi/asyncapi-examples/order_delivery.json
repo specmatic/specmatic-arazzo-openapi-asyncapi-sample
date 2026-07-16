@@ -1,0 +1,24 @@
+{
+  "id": "order-out-for-delivery",
+  "name": "ORDER_OUT_FOR_DELIVERY",
+  "receive": {
+    "topic": "out-for-delivery-orders",
+    "headers": {"requestId": "00000000-0000-4000-8000-000000000001"},
+    "payload": {"orderId": 1}
+  },
+  "after": [
+    {
+      "type": "http",
+      "http-request": {
+        "baseUrl": "http://order:3002",
+        "path": "/orders/1",
+        "method": "GET"
+      },
+      "http-response": {
+        "status": 200,
+        "body": {"orderId": 1, "status": "OUT_FOR_DELIVERY"}
+      },
+      "timeout": "PT15S"
+    }
+  ]
+}

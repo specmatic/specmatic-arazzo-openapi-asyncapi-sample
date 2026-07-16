@@ -1,0 +1,10 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/orders/999999"
+  },
+  "http-response": {
+    "status": 404,
+    "body": {"code": "HTTPException", "message": "Order not found"}
+  }
+}

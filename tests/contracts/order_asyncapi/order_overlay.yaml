@@ -1,0 +1,5 @@
+overlay: 1.0.0
+actions:
+  - target: $.servers.localKafka
+    update:
+      host: kafka:9092
