@@ -33,11 +33,6 @@ paths:
           type: string
           format: email
           example: specmatic@devs.io
-        examples:
-          location_GET_200_1:
-            value: bom@specmatic.io
-          location_GET_200_2:
-            value: hyd@specmatic.io
       responses:
         '200':
           description: Successful retrieval of location data.
@@ -45,11 +40,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LocationResponse'
-              examples:
-                location_GET_200_2:
-                  $ref: '#/components/examples/location_GET_200_2_response'
-                location_GET_200_1:
-                  $ref: '#/components/examples/location_GET_200_1_response'
         '400':
           description: Invalid request. usually due to a malformed UUID or missing
             parameters.
@@ -73,8 +63,7 @@ components:
         - locationCode
       properties:
         userId:
-          type: string
-          format: integer
+          type: integer
         locationCode:
           type: string
           example: "IND-HYD"
@@ -92,12 +81,3 @@ components:
         message:
           type: string
           example: The provided userId is not a valid UUID.
-  examples:
-    location_GET_200_2_response:
-      value:
-        userId: naresh-jain
-        locationCode: HYD-IN
-    location_GET_200_1_response:
-      value:
-        userId: john-doe
-        locationCode: BOM-IN

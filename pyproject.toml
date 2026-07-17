@@ -12,5 +12,11 @@ dependencies = [
     "sqlmodel>=0.0.27",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
+    "testcontainers[kafka,postgres]>=4.12.0",
+]
+
 [tool.uv]
 package = false

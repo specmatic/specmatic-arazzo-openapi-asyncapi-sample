@@ -1,0 +1,42 @@
+version: 3
+systemUnderTest:
+  service:
+    $ref: "#/components/services/order"
+    runOptions:
+      asyncapi:
+        type: test
+        replyTimeout: 15000
+        subscriberReadinessWaitTime: 3000
+        specs:
+          - spec:
+              id: orderAsyncSpec
+              overlayFilePath: ./order_overlay.yaml
+    data:
+      examples:
+        - directories: [asyncapi-examples]
+specmatic:
+  settings:
+    test:
+      schemaResiliencyTests: all
+      strictMode: true
+  governance:
+    report:
+      formats: [ctrf, html]
+      outputDirectory: build/reports/specmatic
+    successCriteria:
+      minCoveragePercentage: 100
+      maxMissedOperationsInSpec: 0
+      enforce: true
+components:
+  services:
+    order:
+      description: Order AsyncAPI
+      definitions:
+        - definition:
+            source:
+              filesystem:
+                directory: ../../../specifications/asyncapi
+            specs:
+              - spec:
+                  id: orderAsyncSpec
+                  path: order.yaml

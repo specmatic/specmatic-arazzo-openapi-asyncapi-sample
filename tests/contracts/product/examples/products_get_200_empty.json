@@ -1,0 +1,8 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/products",
+    "query": {"locationCode": "IND-DEL"}
+  },
+  "http-response": {"status": 200, "body": []}
+}

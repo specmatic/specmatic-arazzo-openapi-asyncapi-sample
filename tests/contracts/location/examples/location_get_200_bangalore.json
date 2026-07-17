@@ -1,0 +1,11 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/location",
+    "query": {"userEmail": "blr@specmatic.io"}
+  },
+  "http-response": {
+    "status": 200,
+    "body": {"userId": 1, "locationCode": "IND-BLR"}
+  }
+}

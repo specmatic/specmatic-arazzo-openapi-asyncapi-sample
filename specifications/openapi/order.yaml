@@ -18,6 +18,34 @@ tags:
   - name: Order
 
 paths:
+  /orders:
+    post:
+      summary: Accept a pending order
+      description: Marks a pending order as accepted after inventory reservation.
+      operationId: acceptOrder
+      tags:
+        - Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderAcceptanceRequest"
+      responses:
+        "200":
+          description: Order accepted.
+        "400":
+          description: Order is not pending.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Order not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /orders/{orderId}:
     get:
       summary: Get order details
@@ -31,7 +59,7 @@ paths:
           description: The unique identifier of the order to retrieve.
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         "200":
           description: Successful retrieval of order details.
@@ -54,22 +82,26 @@ paths:
 
 components:
   schemas:
+    OrderAcceptanceRequest:
+      type: object
+      required:
+        - orderId
+      properties:
+        orderId:
+          type: integer
     OrderResponse:
       type: object
       required:
         - orderId
         - userId
-        - items
-        - locationCode
+        - productId
         - status
       properties:
         orderId:
-          type: string
-          format: uuid
+          type: integer
           description: The unique identifier of the order.
         userId:
-          type: string
-          format: uuid
+          type: integer
           description: The unique identifier of the user who placed the order.
         productId:
           type: integer

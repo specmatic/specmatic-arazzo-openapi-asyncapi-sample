@@ -1,0 +1,8 @@
+{
+  "http-request": {
+    "method": "PUT",
+    "path": "/inventory",
+    "query": {"orderId": 1}
+  },
+  "http-response": {"status": 200}
+}

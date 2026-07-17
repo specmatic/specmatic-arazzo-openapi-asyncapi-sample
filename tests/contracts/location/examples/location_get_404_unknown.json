@@ -1,0 +1,11 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/location",
+    "query": {"userEmail": "missing@specmatic.io"}
+  },
+  "http-response": {
+    "status": 404,
+    "body": {"code": "HTTPException", "message": "User not found"}
+  }
+}

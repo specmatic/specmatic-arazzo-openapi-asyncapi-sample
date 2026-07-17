@@ -1,0 +1,58 @@
+version: 3
+systemUnderTest:
+  service:
+    $ref: "#/components/services/warehouse"
+    runOptions:
+      $ref: "#/components/runOptions/warehouseTest"
+    data:
+      examples:
+        - directories: [examples]
+dependencies:
+  services:
+    - service:
+        $ref: "#/components/services/orderCallback"
+        runOptions:
+          $ref: "#/components/runOptions/orderMock"
+        data:
+          examples:
+            - directories: [order-callback-examples]
+specmatic:
+  settings:
+    test:
+      schemaResiliencyTests: all
+      strictMode: true
+  governance:
+    report:
+      formats: [ctrf, html]
+      outputDirectory: build/reports/specmatic
+    successCriteria:
+      minCoveragePercentage: 100
+      maxMissedOperationsInSpec: 0
+      enforce: true
+components:
+  services:
+    warehouse:
+      description: Warehouse API
+      definitions:
+        - definition:
+            source:
+              filesystem:
+                directory: ../../../specifications/openapi
+            specs: [warehouse.yaml]
+    orderCallback:
+      description: Order Service API used by the warehouse callback
+      definitions:
+        - definition:
+            source:
+              filesystem:
+                directory: ../../../specifications/openapi
+            specs: [order.yaml]
+  runOptions:
+    warehouseTest:
+      openapi:
+        type: test
+        baseUrl: http://warehouse:3003
+    orderMock:
+      openapi:
+        type: mock
+        baseUrl: http://order:3002
